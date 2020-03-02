@@ -61,6 +61,9 @@ Come up with a good dataset:
 - Accents (Spanish, Mexican...)
 - Noise (cafe, car...)
 - Bandwidth
+- Skew (training/testing draw in an IDD* manner)
+
+> * Independently and identically distributed
 
 ## Impact on business
 
@@ -79,9 +82,9 @@ Come up with a good dataset:
 
 ## Reality
 
+- Trains (detecting train lanes) and wolves (detecting snow)
 - Facebook? (black monkeys)
 - Tesla (rain inside tunnels)
-- Trains (detecting train lanes)
 - Tanks (all enemies at night)
 - Sex bias
 - Racial bias
@@ -110,6 +113,10 @@ Come up with a good dataset:
 
 # XAI
 
+## Definition
+
+> XAI is the ability to explain or to present in understandable terms to a human
+
 ## Problem
 
 ![](static/xai-problem.png)
@@ -118,17 +125,51 @@ Come up with a good dataset:
 
 ![](static/xai-goal.png)
 
+---
+
+- Inform and support human decision
+- Trust in model predictions
+- Transparency of the methodology
+- Scope of the model
+- Enable debugging
+- Enable auditing
+- Verify generalization ability
+
+## Research
+
+- Input attribution: LIME, LOCO, SHAP, DeepLift, XRAI...
+- Concept testing/extraction: TCAV, DeepR...
+- Example influence/matching: MMD Critic, Influence Functions, Attention-Based Prototypical Learning
+- Distillation: distilling a neural network into soft decision tree
+
+
+# Feature attributions
+
+## Features
+
+- Not independent!
+- Attribution? :thinking:
+- Game theory: Shapley* values
+
+> *not the one in "A Beautiful mind", that was Nash
+
+## Shapley values
+
+$N$ employees and $v(N)$ profit to distribute
+
+![](static/growing-the-company.png){width=600}
+
+$$
+A_{avg} = 30, B_{avg} = 25, C_{avg} = 45
+$$
+
+## It is a complex problem
+
+- Baselines: $\{B, C\} \rightarrow [\beta_1, x_2, x_3]$
+- Complexity: $\mathcal{O}(n!)$
+- Approximations: [SHAP](https://arxiv.org/abs/1705.07874)
+
 
 # That's all! :tada: :beers: :smile:
-
-## Resources
-
-- https://www.youtube.com/watch?v=21EiKfQYZXc
-- https://www.youtube.com/watch?v=rI_L95qnVkM
-- https://www.youtube.com/watch?v=CY3t11vuuOM
-- https://www.youtube.com/watch?v=B-c8tIgchu0
-- https://github.com/slundberg/shap
-- https://github.com/ibm/aix360
-- https://cloud.google.com/explainable-ai/
 
 ## Thanks! :heart:
