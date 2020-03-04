@@ -157,7 +157,7 @@ Come up with a good dataset:
 
 $N$ employees and $v(N)$ profit to distribute
 
-![](static/growing-the-company.png){width=600}
+![](static/growing-the-company.png){width=60%}
 
 $$
 A_{avg} = 30, B_{avg} = 25, C_{avg} = 45
@@ -169,6 +169,31 @@ $$
 - Complexity: $\mathcal{O}(n!)$
 - Approximations: [SHAP](https://arxiv.org/abs/1705.07874)
 
+## Features force
+
+![](static/shap-features-force.png)
+
+## Features summary
+
+![](static/shap-features-summary.png){width=60%}
+
+## Deep learning example
+
+![](static/shap-deep-learning.png)
+
+## Other examples
+
+TreeExplainer: Tree SHAP, a fast and exact algorithm for ensembles of trees:
+
+- [NHANES](https://slundberg.github.io/shap/notebooks/NHANES%20I%20Survival%20Model.html)
+
+DeepExplainer: Deep SHAP, a faster but approximate algorithm for DL models:
+
+- [MNIST digit classification](https://slundberg.github.io/shap/notebooks/deep_explainer/Front%20Page%20DeepExplainer%20MNIST%20Example.html)
+
+KernelExplainer: Kernel SHAP, a model-agnostic method to estimate SHAP values:
+
+- [ImageNet VGG16](https://slundberg.github.io/shap/notebooks/ImageNet%20VGG16%20Model%20with%20Keras.html)
 
 # That's all! :tada: :beers: :smile:
 
