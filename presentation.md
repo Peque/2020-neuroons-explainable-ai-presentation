@@ -108,6 +108,11 @@ Come up with a good dataset:
 > - pregnancy
 >   - kidney stone
 
+---
+
+- computer programmer --> homemaker?
+- mexicans --> hipanics, latinos, illegals...?
+
 ## Demo
 
 
@@ -116,6 +121,10 @@ Come up with a good dataset:
 ## Definition
 
 > XAI is the ability to explain or to present in understandable terms to a human
+
+---
+
+![](static/xkcd-ml.png)
 
 ## Problem
 
@@ -167,7 +176,9 @@ $$
 
 - Baselines: $\{B, C\} \rightarrow [\beta_1, x_2, x_3]$
 - Complexity: $\mathcal{O}(n!)$
-- Approximations: [SHAP](https://arxiv.org/abs/1705.07874)
+- Solutions: [SHAP](https://arxiv.org/abs/1705.07874)
+
+> SHAP integrates and improve other previous methods such as LIME
 
 ## Features force
 
@@ -180,6 +191,17 @@ $$
 ## Deep learning example
 
 ![](static/shap-deep-learning.png)
+
+## Advantages
+
+- Debugging models (i.e.: detecting radiologist's pen marks)
+- Optimizing models (i.e.: remove less important features)
+
+## Limitations
+
+- Attributions are specific to individual predictions (but you can aggregate)
+- Does the issue come from the model or the data?
+- Adversarial attacks
 
 ## Other examples
 
@@ -194,6 +216,18 @@ DeepExplainer: Deep SHAP, a faster but approximate algorithm for DL models:
 KernelExplainer: Kernel SHAP, a model-agnostic method to estimate SHAP values:
 
 - [ImageNet VGG16](https://slundberg.github.io/shap/notebooks/ImageNet%20VGG16%20Model%20with%20Keras.html)
+
+## Google
+
+- [AI Explanations with AI Platform Prediction](https://cloud.google.com/ai-platform/prediction/docs/ai-explanations/using-feature-attributions)
+
+Examples:
+
+- [Predict the duration of a bike trip](https://colab.research.google.com/github/GoogleCloudPlatform/ml-on-gcp/blob/master/tutorials/explanations/ai-explanations-tabular.ipynb)
+- [AI Explanations: Explaining an image data model](https://colab.research.google.com/github/GoogleCloudPlatform/ml-on-gcp/blob/master/tutorials/explanations/ai-explanations-image.ipynb)
+
+
+# What-If-Tool
 
 # That's all! :tada: :beers: :smile:
 
