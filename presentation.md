@@ -15,7 +15,10 @@
 
 ## Abstract
 
-- TODO
+- AI
+- Supervised learning
+- XAI
+- Feature attributions, WIT, Google...
 
 
 # Introduction
@@ -36,7 +39,7 @@
 
 ## Why now?
 
-![](static/ai-performance.png)
+![](static/ai-performance.svg)
 
 ## Resources
 
@@ -47,11 +50,11 @@
 
 ## Data scarcity?
 
-![](static/data-scarcity.png)
+![](static/data-scarcity.svg){width=50%}
 
 ## AI Product management
 
-![](static/ai-product-management.png)
+![](static/ai-product-management.svg)
 
 ## Communicate through data
 
@@ -91,7 +94,7 @@ Come up with a good dataset:
 
 ## Word embedding
 
-![](static/word-embedding.png)
+![](static/word-embedding.svg)
 
 ## Gender analogies
 
@@ -105,10 +108,8 @@ Come up with a good dataset:
 >   - WTF
 > - feminist
 >   - realist
-> - pregnancy
->   - kidney stone
 
----
+## And more...
 
 - computer programmer --> homemaker?
 - mexicans --> hipanics, latinos, illegals...?
@@ -126,13 +127,13 @@ Come up with a good dataset:
 
 ![](static/xkcd-ml.png)
 
-## Problem
+## Problem: why?
 
-![](static/xai-problem.png)
+![](static/xai-problem.svg)
 
 ## Goal
 
-![](static/xai-goal.png)
+![](static/xai-goal.svg)
 
 ---
 
