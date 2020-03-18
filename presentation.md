@@ -23,12 +23,12 @@
 
 # Introduction
 
-## AI is the new electricity
+## AI is the new electricity :zap:
 
 - IT, healthcare, transportation... heirdressing?
 - Mostly supervised (based on economic value)
 
-## Can AI do it?
+## Can AI do it? :thinking:
 
 - No universal rule
 - Can a human do it?
@@ -66,9 +66,9 @@ Come up with a good dataset:
 - Bandwidth
 - Skew (training/testing draw in an IDD* manner)
 
-> * Independently and identically distributed
+> *Independently and identically distributed
 
-## Impact on business
+## Impact on business :moneybag:
 
 
 # Supervised learning
@@ -81,14 +81,16 @@ Come up with a good dataset:
 - Language translation
 - Add clicking
 
-## Expectations
+## Expectations :heart:
 
 ## Reality
 
-- Trains (detecting train lanes) and wolves (detecting snow)
-- Facebook? (black monkeys)
-- Tesla (rain inside tunnels)
-- Tanks (all enemies at night)
+![](static/ai-fails.svg)
+
+## Can be much worse... :woman_facepalming:
+
+- Classifying black people as monkeys
+- Thiking all tanks are enemies at night
 - Sex bias
 - Racial bias
 
@@ -96,7 +98,7 @@ Come up with a good dataset:
 
 ![](static/word-embedding.svg)
 
-## Gender analogies
+## Gender analogies :couple:
 
 > - she
 >   - he
@@ -114,7 +116,7 @@ Come up with a good dataset:
 - computer programmer --> homemaker?
 - mexicans --> hipanics, latinos, illegals...?
 
-## Demo
+## Demo :eyes:
 
 
 # XAI
@@ -131,7 +133,7 @@ Come up with a good dataset:
 
 ![](static/xai-problem.svg)
 
-## Goal
+## Goal :dart:
 
 ![](static/xai-goal.svg)
 
@@ -145,7 +147,7 @@ Come up with a good dataset:
 - Enable auditing
 - Verify generalization ability
 
-## Research
+## Research :test_tube:
 
 - Input attribution: LIME, LOCO, SHAP, DeepLift, XRAI...
 - Concept testing/extraction: TCAV, DeepR...
@@ -181,7 +183,7 @@ $$
 
 > SHAP integrates and improve other previous methods such as LIME
 
-## Features force
+## Features force :muscle:
 
 ![](static/shap-features-force.png)
 
@@ -193,7 +195,7 @@ $$
 
 ![](static/shap-deep-learning.png)
 
-## Advantages
+## Advantages :+1:
 
 - Debugging models (i.e.: detecting radiologist's pen marks)
 - Optimizing models (i.e.: remove less important features)
@@ -218,7 +220,7 @@ KernelExplainer: Kernel SHAP, a model-agnostic method to estimate SHAP values:
 
 - [ImageNet VGG16](https://slundberg.github.io/shap/notebooks/ImageNet%20VGG16%20Model%20with%20Keras.html)
 
-## Google
+## Google :eyes:
 
 - [AI Explanations with AI Platform Prediction](https://cloud.google.com/ai-platform/prediction/docs/ai-explanations/using-feature-attributions)
 
@@ -229,6 +231,26 @@ Examples:
 
 
 # What-If-Tool
+
+## Features :white_check_mark:
+
+- Compare multiple models
+- Visualize inference results
+- Visualize feature attributions
+- Arrange datapoints by similarity
+- ...
+
+---
+
+- ...
+- Edit a datapoint and see how the model performs
+- Compare counterfactuals to datapoints
+- Experiment using confusion matrices and ROC curves
+- Test algoritmic fairness constraints
+
+## Demos :eyes:
+
+- [What-If Tool online demos](https://pair-code.github.io/what-if-tool/index.html#demos)
 
 # That's all! :tada: :beers: :smile:
 
