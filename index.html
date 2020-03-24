@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Miguel Sánchez de León Peque">
+  <meta name="dcterms.date" content="2020-01-01">
+  <title>Explainable AI</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="revealjs/css/reset.css">
+  <link rel="stylesheet" href="revealjs/css/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="revealjs/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="markdownrevealstyle/custom.css">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'revealjs/css/print/pdf.css' : 'revealjs/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="revealjs/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="katex/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="katex/katex.min.css" />
+
+<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
+  crossorigin="anonymous"></script>
+<script>
+  function addEvent(element, eventName, fn) {
+    if (element.addEventListener)
+      element.addEventListener(eventName, fn, false);
+    else if (element.attachEvent)
+      element.attachEvent('on' + eventName, fn);
+  }
+
+  addEvent(window, 'load', function() {
+    twemoji.parse(document.body, {'folder': 'svg', 'ext': '.svg'});
+  });
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+<div class="logo"><img src="markdownrevealstyle/logo.svg" /></div>
+    <div class="slides">
+
+<section data-background="markdownrevealstyle/background.svg" id="title-slide">
+  <h1 class="title">Explainable AI</h1>
+  <p class="author">Miguel Sánchez de León Peque</p>
+  <p class="date">2020</p>
+</section>
+
+<section data-background="markdownrevealstyle/background.svg">
+<section data-background="markdownrevealstyle/background.svg" id="presentation" class="title-slide slide level1">
+<h1>Presentation</h1>
+
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="hi" class="slide level2">
+<h2>Hi! <span class="emoji" data-emoji="wave">👋</span></h2>
+<ul>
+<li><a href="https://www.linkedin.com/in/peque">Miguel Sánchez de León Peque</a></li>
+<li><a href="http://www.opensistemas.com">OpenSistemas</a></li>
+<li>Data scientist</li>
+<li>Programming, data, machine learning</li>
+<li>Python <span class="emoji" data-emoji="heart">❤️</span></li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="abstract" class="slide level2">
+<h2>Abstract</h2>
+<ul>
+<li>AI</li>
+<li>Supervised learning</li>
+<li>XAI</li>
+<li>Feature attributions, WIT, Google…</li>
+</ul>
+</section>
+</section>
+<section data-background="markdownrevealstyle/background.svg">
+<section data-background="markdownrevealstyle/background.svg" id="introduction" class="title-slide slide level1">
+<h1>Introduction</h1>
+
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="ai-is-the-new-electricity" class="slide level2">
+<h2>AI is the new electricity <span class="emoji" data-emoji="zap">⚡</span></h2>
+<ul>
+<li>IT, healthcare, transportation… heirdressing?</li>
+<li>Mostly supervised (based on economic value)</li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="can-ai-do-it" class="slide level2">
+<h2>Can AI do it? <span class="emoji" data-emoji="thinking">🤔</span></h2>
+<ul>
+<li>No universal rule</li>
+<li>Can a human do it?
+<ul>
+<li>Feasible</li>
+<li>Data</li>
+<li>Insights</li>
+</ul></li>
+<li>Takes a human less than 1 second of thought?</li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="why-now" class="slide level2">
+<h2>Why now?</h2>
+<p><img data-src="static/ai-performance.svg" /></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="resources" class="slide level2">
+<h2>Resources</h2>
+<ul>
+<li><span class="emoji" data-emoji="white_check_mark">✅</span> Algorithms</li>
+<li><span class="emoji" data-emoji="white_check_mark">✅</span> Computing power</li>
+<li><span class="emoji" data-emoji="x">❌</span> Data</li>
+<li><span class="emoji" data-emoji="x">❌</span> Talent</li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="data-scarcity" class="slide level2">
+<h2>Data scarcity?</h2>
+<p><img data-src="static/data-scarcity.svg" style="width:50.0%" /></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="ai-product-management" class="slide level2">
+<h2>AI Product management</h2>
+<p><img data-src="static/ai-product-management.svg" /></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="communicate-through-data" class="slide level2">
+<h2>Communicate through data</h2>
+<p>Come up with a good dataset:</p>
+<ul>
+<li>10 years of audio recordings</li>
+<li>Accents (Spanish, Mexican…)</li>
+<li>Noise (cafe, car…)</li>
+<li>Bandwidth</li>
+<li>Skew (training/testing draw in an IDD* manner)</li>
+</ul>
+<blockquote>
+<p>*Independently and identically distributed</p>
+</blockquote>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="impact-on-business" class="slide level2">
+<h2>Impact on business <span class="emoji" data-emoji="moneybag">💰</span></h2>
+</section>
+</section>
+<section data-background="markdownrevealstyle/background.svg">
+<section data-background="markdownrevealstyle/background.svg" id="supervised-learning" class="title-slide slide level1">
+<h1>Supervised learning</h1>
+
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="mapping" class="slide level2">
+<h2>Mapping</h2>
+<ul>
+<li>Spam detection</li>
+<li>Image classification</li>
+<li>Speech recognition</li>
+<li>Language translation</li>
+<li>Add clicking</li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="expectations-️" class="slide level2">
+<h2>Expectations <span class="emoji" data-emoji="heart">❤️</span></h2>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="reality" class="slide level2">
+<h2>Reality</h2>
+<p><img data-src="static/ai-fails.svg" /></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="can-be-much-worse-️" class="slide level2">
+<h2>Can be much worse… <span class="emoji" data-emoji="woman_facepalming">🤦‍♀️</span></h2>
+<ul>
+<li>Classifying black people as monkeys</li>
+<li>Thiking all tanks are enemies at night</li>
+<li>Sex bias</li>
+<li>Racial bias</li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="word-embedding" class="slide level2">
+<h2>Word embedding</h2>
+<p><img data-src="static/word-embedding.svg" /></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="gender-analogies" class="slide level2">
+<h2>Gender analogies <span class="emoji" data-emoji="couple">👫</span></h2>
+<ul>
+<li class="fragment">she
+<ul>
+<li class="fragment">he</li>
+</ul></li>
+<li class="fragment">sister
+<ul>
+<li class="fragment">brother</li>
+</ul></li>
+<li class="fragment">nurse
+<ul>
+<li class="fragment">doctor</li>
+</ul></li>
+<li class="fragment">OMG
+<ul>
+<li class="fragment">WTF</li>
+</ul></li>
+<li class="fragment">feminist
+<ul>
+<li class="fragment">realist</li>
+</ul></li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="and-more" class="slide level2">
+<h2>And more…</h2>
+<ul>
+<li>computer programmer –&gt; homemaker?</li>
+<li>mexicans –&gt; hipanics, latinos, illegals…?</li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="demo" class="slide level2">
+<h2>Demo <span class="emoji" data-emoji="eyes">👀</span></h2>
+</section>
+</section>
+<section data-background="markdownrevealstyle/background.svg">
+<section data-background="markdownrevealstyle/background.svg" id="xai" class="title-slide slide level1">
+<h1>XAI</h1>
+
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="definition" class="slide level2">
+<h2>Definition</h2>
+<blockquote>
+<p>XAI is the ability to explain or to present in understandable terms to a human</p>
+</blockquote>
+</section>
+<section data-background="markdownrevealstyle/background.svg" class="slide level2">
+
+<p><img data-src="static/xkcd-ml.png" /></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="problem-why" class="slide level2">
+<h2>Problem: why?</h2>
+<p><img data-src="static/xai-problem.svg" /></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="goal" class="slide level2">
+<h2>Goal <span class="emoji" data-emoji="dart">🎯</span></h2>
+<p><img data-src="static/xai-goal.svg" /></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" class="slide level2">
+
+<ul>
+<li>Inform and support human decision</li>
+<li>Trust in model predictions</li>
+<li>Transparency of the methodology</li>
+<li>Scope of the model</li>
+<li>Enable debugging</li>
+<li>Enable auditing</li>
+<li>Verify generalization ability</li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="research" class="slide level2">
+<h2>Research <span class="emoji" data-emoji="test_tube">🧪</span></h2>
+<ul>
+<li>Input attribution: LIME, LOCO, SHAP, DeepLift, XRAI…</li>
+<li>Concept testing/extraction: TCAV, DeepR…</li>
+<li>Example influence/matching: MMD Critic, Influence Functions, Attention-Based Prototypical Learning</li>
+<li>Distillation: distilling a neural network into soft decision tree</li>
+</ul>
+</section>
+</section>
+<section data-background="markdownrevealstyle/background.svg">
+<section data-background="markdownrevealstyle/background.svg" id="feature-attributions" class="title-slide slide level1">
+<h1>Feature attributions</h1>
+
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="features" class="slide level2">
+<h2>Features</h2>
+<ul>
+<li>Not independent!</li>
+<li>Attribution? <span class="emoji" data-emoji="thinking">🤔</span></li>
+<li>Game theory: Shapley* values</li>
+</ul>
+<blockquote>
+<p>*not the one in “A Beautiful mind”, that was Nash</p>
+</blockquote>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="shapley-values" class="slide level2">
+<h2>Shapley values</h2>
+<p><span class="math inline">N</span> employees and <span class="math inline">v(N)</span> profit to distribute</p>
+<p><img data-src="static/growing-the-company.png" style="width:60.0%" /></p>
+<p><span class="math display">
+A_{avg} = 30, B_{avg} = 25, C_{avg} = 45
+</span></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="it-is-a-complex-problem" class="slide level2">
+<h2>It is a complex problem</h2>
+<ul>
+<li>Baselines: <span class="math inline">\{B, C\} \rightarrow [\beta_1, x_2, x_3]</span></li>
+<li>Complexity: <span class="math inline">\mathcal{O}(n!)</span></li>
+<li>Solutions: <a href="https://arxiv.org/abs/1705.07874">SHAP</a></li>
+</ul>
+<blockquote>
+<p>SHAP integrates and improve other previous methods such as LIME</p>
+</blockquote>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="features-force" class="slide level2">
+<h2>Features force <span class="emoji" data-emoji="muscle">💪</span></h2>
+<p><img data-src="static/shap-features-force.png" /></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="features-summary" class="slide level2">
+<h2>Features summary</h2>
+<p><img data-src="static/shap-features-summary.png" style="width:60.0%" /></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="deep-learning-example" class="slide level2">
+<h2>Deep learning example</h2>
+<p><img data-src="static/shap-deep-learning.png" /></p>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="advantages" class="slide level2">
+<h2>Advantages <span class="emoji" data-emoji="+1">👍</span></h2>
+<ul>
+<li>Debugging models (i.e.: detecting radiologist’s pen marks)</li>
+<li>Optimizing models (i.e.: remove less important features)</li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="limitations" class="slide level2">
+<h2>Limitations</h2>
+<ul>
+<li>Attributions are specific to individual predictions (but you can aggregate)</li>
+<li>Does the issue come from the model or the data?</li>
+<li>Adversarial attacks</li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="other-examples" class="slide level2">
+<h2>Other examples</h2>
+<p>TreeExplainer: Tree SHAP, a fast and exact algorithm for ensembles of trees:</p>
+<ul>
+<li><a href="https://slundberg.github.io/shap/notebooks/NHANES%20I%20Survival%20Model.html">NHANES</a></li>
+</ul>
+<p>DeepExplainer: Deep SHAP, a faster but approximate algorithm for DL models:</p>
+<ul>
+<li><a href="https://slundberg.github.io/shap/notebooks/deep_explainer/Front%20Page%20DeepExplainer%20MNIST%20Example.html">MNIST digit classification</a></li>
+</ul>
+<p>KernelExplainer: Kernel SHAP, a model-agnostic method to estimate SHAP values:</p>
+<ul>
+<li><a href="https://slundberg.github.io/shap/notebooks/ImageNet%20VGG16%20Model%20with%20Keras.html">ImageNet VGG16</a></li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="google" class="slide level2">
+<h2>Google <span class="emoji" data-emoji="eyes">👀</span></h2>
+<ul>
+<li><a href="https://cloud.google.com/ai-platform/prediction/docs/ai-explanations/using-feature-attributions">AI Explanations with AI Platform Prediction</a></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><a href="https://colab.research.google.com/github/GoogleCloudPlatform/ml-on-gcp/blob/master/tutorials/explanations/ai-explanations-tabular.ipynb">Predict the duration of a bike trip</a></li>
+<li><a href="https://colab.research.google.com/github/GoogleCloudPlatform/ml-on-gcp/blob/master/tutorials/explanations/ai-explanations-image.ipynb">AI Explanations: Explaining an image data model</a></li>
+</ul>
+</section>
+</section>
+<section data-background="markdownrevealstyle/background.svg">
+<section data-background="markdownrevealstyle/background.svg" id="what-if-tool" class="title-slide slide level1">
+<h1>What-If-Tool</h1>
+
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="features-1" class="slide level2">
+<h2>Features <span class="emoji" data-emoji="white_check_mark">✅</span></h2>
+<ul>
+<li>Compare multiple models</li>
+<li>Visualize inference results</li>
+<li>Visualize feature attributions</li>
+<li>Arrange datapoints by similarity</li>
+<li>…</li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" class="slide level2">
+
+<ul>
+<li>…</li>
+<li>Edit a datapoint and see how the model performs</li>
+<li>Compare counterfactuals to datapoints</li>
+<li>Experiment using confusion matrices and ROC curves</li>
+<li>Test algoritmic fairness constraints</li>
+</ul>
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="demos" class="slide level2">
+<h2>Demos <span class="emoji" data-emoji="eyes">👀</span></h2>
+<ul>
+<li><a href="https://pair-code.github.io/what-if-tool/index.html#demos">What-If Tool online demos</a></li>
+</ul>
+</section>
+</section>
+<section data-background="markdownrevealstyle/background.svg">
+<section data-background="markdownrevealstyle/background.svg" id="thats-all" class="title-slide slide level1">
+<h1>That’s all! <span class="emoji" data-emoji="tada">🎉</span> <span class="emoji" data-emoji="beers">🍻</span> <span class="emoji" data-emoji="smile">😄</span></h1>
+
+</section>
+<section data-background="markdownrevealstyle/background.svg" id="thanks-️" class="slide level2">
+<h2>Thanks! <span class="emoji" data-emoji="heart">❤️</span></h2>
+</section>
+</section>
+    </div>
+  </div>
+
+  <script src="revealjs/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'revealjs/plugin/zoom-js/zoom.js', async: true },
+          { src: 'revealjs/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
